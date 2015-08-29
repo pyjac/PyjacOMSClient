@@ -1,0 +1,235 @@
+  <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>
+                        My Orders
+                        <small>Control panel</small>
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                        <li>Order Management</li>
+                        <li class="active">My Orders</li>
+                    </ol>
+                </section>
+                
+                
+                <!-- Main content -->
+                <section class="content">
+
+                    <!-- Main row -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <!-- Primary box -->
+                            <div class="box box-solid box-primary">
+                                <div class="box-header">
+                                    <h3 class="box-title">Orders</h3>
+                                    <div class="box-tools pull-right">
+                                        <button class="btn btn-primary btn-sm" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                        <button class="btn btn-primary btn-sm" data-widget="remove"><i class="fa fa-times"></i></button>
+                                    </div>
+                                </div>
+                                <div class="box-body table-responsive">
+                                <div class='col-xs-3'>
+                                <label for="symbolMass">Symbol</label>
+                            <select ng-model="formMassAction.symbol" name="formMassAction.symbol" id="symbolMass" class="form-control" 
+                            ng-options="Security.SecurityID as Security.Symbol for Security in securities">
+                                <option value="">Select Symbol</option>
+                            </select>
+                             <button class="btn btn-primary btn-sm sm-margin" ng-click="CancelAllOrdersForSecurity()" >Cancel All Orders </button>
+                            <!--
+                                <select ng-model="formData.symbol" name="formData.symbol" id="symbol" class="form-control" required>
+                                    <option value="PYJAC">
+                                            PYJAC
+                                    </option>
+                                </select> -->
+                            </div>
+                                   <table id="Securities" class="table table-bordered table-hover dataTable">
+                                        <thead>
+                                  <tr>
+                                    <th class="sorting_asc">Security Name</th>
+                                    <th class="sorting">Price</th>
+                                    <th class="sorting">Side</th>
+                                    <th class="sorting">Status</th>
+                                    <th class="sorting">Type</th>
+                                    <th>Operations</th>
+                                  </tr>
+                                </thead>
+                                        <tbody role="alert" aria-live="polite" aria-relevant="all">
+                                       <tr >
+                                           <td> &nbsp;</td>
+                                           <td> &nbsp;</td>
+                                           <td> &nbsp;</td>
+                                           <td>  &nbsp; </td>
+                                           <td> &nbsp;</td>
+                                           <td class="center">
+                                           <button class="btn btn-primary btn-sm sm-margin" ng-click="CancelAllOrders()" >Cancel All</button>
+                                           <button class="btn btn-primary btn-sm sm-margin" ng-click="AllOrdersStatus()" >All Orders Status</button>
+                                           <button class="btn btn-danger btn-sm sm-margin" ng-click="" >Modify</button></td>
+
+                                           
+                                       </tr>
+                                        <tr ng-repeat="order in orders">
+                                           <td> {{order.Symbol}}</td>
+                                           <td>{{order.Price}}</td>
+                                           <td>{{order.Side}}</td>
+                                           <td> Status </td>
+                                           <td>{{order.OrdType}}</td>
+                                           <td class="center">
+                                           <button class="btn btn-primary btn-sm sm-margin" ng-click="CancelOrder(order.Id,1)" >Cancel</button>
+                                           <button class="btn btn-primary btn-sm sm-margin" ng-click="OrderStatus(order.Id,1)" >Status</button>
+                                           <button class="btn btn-danger btn-sm sm-margin" ng-click="ModifyOrder(order.Id)" >Modify</button></td>
+
+                                           
+                                       </tr>
+                                            
+                                           </tbody>
+                                       
+                                    </table>
+                               
+                                </div><!-- /.box-body -->
+                            </div><!-- /.box -->
+                        </div>
+                       
+                    </div><!-- /.row (main row) -->
+                    
+                     
+
+                </section><!-- /.content -->
+
+
+                <div class="modal fade" id="orderModificationModal" tabindex="-1" role="dialog" aria-labelledby="orderModificationModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="orderModificationModalLabel">Modify Order : {{ formData.ClOrdID }}</h4>
+      </div>
+      <div class="modal-body">
+        <form role="form" ng-submit="newModifyOrder()">
+        <div class="form-group">
+            <label for="Side" class="control-label">BUY :</label>
+           <select name="Side" ng-model="formData.Side" id="Side" class="form-control" >
+                                    <option value="1">
+                                        BUY
+                                    </option>
+                                    <option value="2">
+                                        SELL
+                                    </option>
+                                   
+                                    
+                                </select>
+            
+          </div>
+          <div class="form-group">
+            <label for="volume" class="control-label">Volume:</label>
+            <input class="form-control" id="volume" name="volume" ng-model="formData.volume" type="text"/>
+            
+          </div>
+           
+          <div class="form-group">
+            <label for="price" class="control-label">Price :</label>
+            <input class="form-control" id="price" name="price" ng-model="formData.price" type="text"/>
+            
+          </div>
+           <div class="form-group">
+            <label for="price" class="control-label">OrdType :</label>
+           <select name="orderType" ng-model="formData.orderType" id="orderType" class="form-control" >
+                                    <option value="1">
+                                        MARKET
+                                    </option>
+                                    <option value="2">
+                                        LIMIT
+                                    </option>
+                                    <option value="3">
+                                        STOP/STOP LOSS
+                                    </option>
+                                    <option value="4">
+                                        STOP LIMT
+                                    </option>
+                                    
+                                </select>
+            
+          </div>
+ <div class="form-group">
+          <label for="timeInForce">TimeInForce</label>
+                                <select ng-model="formData.timeInForce" name="timeInForce" id="timeInForce" class="form-control" required>
+                                    <option value="1">
+                                        DAY
+                                    </option>
+                                    <option value="2">
+                                        IMMEDIATE OR CANCEL
+                                    </option>
+                                    <option value="6">
+                                        FILL OR KILL
+                                    </option>
+                                    <option value="7">
+                                        GOOD TILL DATE
+                                    </option>
+                                </select>
+                                </div>
+                                 <div class="form-group">
+                                 <label for="expireDate">Expire Date</label>
+                                <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-calendar"></i>
+                                            </div>
+                                            <input class="form-control date" ng-model="formData.expireDate" name="expireDate"  id="expireDate" type="text" >
+                                        </div>
+                                    </div>
+                                 <div class="form-group">
+                                    <label for="account" class="control-label">Account:</label>
+            <input class="form-control" id="account" name="price" ng-model="formData.account" type="text"/>
+                                 </div>
+                                 <div class="form-group">
+                                    <label for="SenderSubID" class="control-label">On Behalf Of :</label>
+            <input class="form-control" id="SenderSubID" name="SenderSubID" ng-model="formData.SenderSubID" type="text"/>
+                                 </div>
+                                 <div class="form-group"></div>
+         
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary" ng-click="newModifyOrder()">Modify Order</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--
+OrderQty (38) 
+  DisplayQty (111) 
+  Price (44) 
+  OrdType (40) 
+  TimeInForce (59) 
+  Yield (236) 
+  ExpireDate (432)
+  ExpireTime (126) 
+  Account (1) 
+  ExecInst (18) 
+  TriggerPrice (1102) -->
+
+<script>
+    /*
+   $(function() {
+        $("#Securities").dataTable({
+        "sScrollY": "200px",
+        "sScrollX": "100%",
+        "sScrollXInner": "110%",
+        "bFilter": false,
+        "bPaginate": false,
+        "bInfo": false
+    });*/
+     $(function() {
+        $("#Securities").dataTable({
+       "bPaginate": true,
+                    "sScrollX": "100%",
+                    "sScrollXInner": "150%",
+                    "bLengthChange": false,
+                    "bFilter": false,
+                    "bSort": true,
+                    "bInfo": true,
+                    "bAutoWidth": false
+    });
+    });
+
+                
+</script>

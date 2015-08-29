@@ -1,0 +1,783 @@
+<div class="row" id="panelContainer" ng-controller="CreateCustomerController" data-bind="router: { transition: 'entrance', cacheViews: false }">
+
+        <form class="form-horizontal" role="form">
+            <div class="col-md-10">
+                <div class="panel panel-primary ">
+                    <div class="panel-heading">
+                        Customer
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-sm-9" style="width: 650px;">
+                            <div class="row">
+                                <div class="form-group">
+
+                                    <label for="CustNo" class="control-label col-md-2"> Cust No</label>
+                                    <div class="col-md-4">
+                                        <div class="input-group">
+                                            <input type="text" id="CustNo" data-bind="value: CustomerCreationVM.CustNo" class="form-control">
+                                            <span class="input-group-btn">
+                                                <button data-toggle="modal" href="#custLookupModal" id="LookupCust" class="btn btn-primary" type="button">&nbsp;</button>
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <label for="Branch" class="control-label col-md-2"> Branch</label>
+                                    <div class="col-md-4"><select id="Branch" data-bind="value: CustomerCreationVM.Branch, options: Branch, optionsValue: 'TransNo', optionsText: 'Name', optionsCaption: ''" class="form-control"></select></div>
+                                </div>
+                            </div>
+
+                            <!-- /Row -->
+
+                            <div class="row"><div class="form-group"><div><label for="Surname" class="control-label col-md-2"> Surname</label><div class="col-md-4"><input type="text" id="Surname" data-bind="value: CustomerCreationVM.Surname" class="form-control"></div></div><div><label for="Title" class="control-label col-md-2"> Title</label><div class="col-md-4"><input type="text" id="Title" data-bind="value: CustomerCreationVM.Title" class="form-control"></div></div></div></div>
+                            <!-- /Row -->
+                            <div class="row"><div class="form-group"><div><label for="Firstname" class="control-label col-md-2"> Firstname</label><div class="col-md-4"><input type="text" id="Firstname" data-bind="value: CustomerCreationVM.Firstname" class="form-control"></div></div><div><label for="Othername" class="control-label col-md-2"> Othername</label><div class="col-md-4"><input type="text" id="Othername" data-bind="value: CustomerCreationVM.Othername" class="form-control"></div></div></div></div>
+                            <!-- /Row -->
+
+                            <div class="row"><div class="form-group"><label for="Contact" class="control-label col-md-2"> Contact</label><div class="col-md-10"><input type="text" id="Contact" data-bind="value: CustomerCreationVM.Contact" class="form-control"></div></div></div>
+                            <!-- /Row -->
+                            <div class="row"><div class="form-group"><label for="Address1" class="control-label col-md-2">Address</label><div class="col-md-10"><input type="text" id="Address1" data-bind="value: CustomerCreationVM.Address1" class="form-control"></div></div></div>
+                            <!-- /Row -->
+                            <div class="row"><div class="form-group"><label for="Address2" class="control-label col-md-2">&nbsp;</label><div class="col-md-10"><input type="text" id="Address2" data-bind="value: CustomerCreationVM.Address2" class="form-control"></div></div></div>
+                            <!-- /Row -->
+
+                            <div class="row">
+                                <div class="form-group">
+                                    <label for="State" class="control-label col-md-2"> State</label>
+                                    <div class="col-md-2">
+                                        <input type="text" id="State" class="form-control">
+                                    </div>
+
+                                    <label for="Country" class="control-label col-md-2"> Country</label>
+                                    <div class="col-md-2">
+                                        <input type="text" id="Country" class="form-control">
+                                    </div>
+                                    <label for="POBox" class="control-label col-md-2"> P O Box</label>
+                                    <div class="col-md-2">
+                                        <input type="text" id="POBox" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /Row -->
+
+                            <div class="row">
+                                <div class="form-group"><div><label for="Fax" class="control-label col-md-2"> Fax</label><div class="col-md-4"><input type="text" id="Fax" data-bind="value: CustomerCreationVM.Fax" class="form-control"></div></div><div><label for="Email" class="control-label col-md-2"> Email</label><div class="col-md-4"><input type="text" id="Email" data-bind="value: CustomerCreationVM.Email" class="form-control"></div></div></div></div>
+                                <!-- /Row -->
+
+
+                                <div class="row">
+                                    <div class="form-group">
+                                        <label for="ClientType" class="control-label col-md-2"> Client Type</label>
+                                        <div class="col-md-4"><select id="Branch" data-bind="value: CustomerCreationVM.Branch, options: Branch, optionsValue: 'TransNo', optionsText: 'Name', optionsCaption: ''" class="form-control"></select></div>
+
+                                        <label for="Phone" class="control-label col-md-2"> Phone</label>
+                                        <div class="col-md-4"><input type="text" id="Phone" data-bind="value: CustomerCreationVM.Phone" class="form-control"></div>
+                                    </div>
+                                </div>
+                                <!-- /Row -->
+
+                                <div class="row">
+                                    <div class="form-group">
+
+                                        <label for="BirthDate" class="control-label col-md-2"> Birth Date</label>
+                                        <div class="col-md-4">
+                                            <div class="input-group date datepicker" data-date-format="dd-mm-yyyy" data-date="new Date()">
+                                                <input type="text" id="BirthDate" class="form-control">
+                                                <span class="input-group-addon add-on"><i class="glyphicon glyphicon-calendar"></i></span>
+                                            </div>
+                                        </div>
+                                        <label for="ContactDate" class="control-label col-md-2"> Contact Date</label>
+                                        <div class="col-md-4">
+                                            <div class="input-group date datepicker" data-date-format="dd-mm-yyyy" data-date="new Date()">
+                                                <input type="text" id="ContactDate" class="form-control">
+                                                <span class="input-group-addon add-on">
+                                                    <i class="glyphicon glyphicon-calendar"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /Row -->
+
+                                <div class="row">
+                                    <div class="form-group">
+                                        <label for="AcctOfficer" class="control-label col-md-2"> Acct Officer</label>
+                                        <div class="col-md-4">
+                                            <div class="input-group">
+                                                <input type="text" id="AcctOfficer" data-bind="value: CustomerCreationVM.AcctOfficer" class="form-control"><span class="input-group-btn">
+                                                <button data-toggle="modal" href="#LookupModal" class="btn btn-primary" type="button">&nbsp;</button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" id="AcctOfficer" data-bind="value: CustomerCreationVM.AcctOfficer" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /Row -->
+
+                            <div class="row"><div class="form-group"><div><label for="Phone" class="control-label col-md-2"> Phone</label><div class="col-md-2"><input type="text" id="Phone" data-bind="value: CustomerCreationVM.Phone" class="form-control"></div></div><div><label for="RCNo" class="control-label col-md-2"> R C No</label><div class="col-md-2"><input type="text" id="RCNo" data-bind="value: CustomerCreationVM.RCNo" class="form-control"></div></div><div><label for="LGA" class="control-label col-md-2"> L G A</label><div class="col-md-2"><input type="text" id="LGA" data-bind="value: CustomerCreationVM.LGA" class="form-control"></div></div></div></div>
+                            <!-- /Row -->
+
+                            <div class="row"><div class="form-group"><div><label for="MotherMaidenName" class="control-label col-md-2"> Mother Maiden Name</label><div class="col-md-4"><input type="text" id="MotherMaidenName" data-bind="value: CustomerCreationVM.MotherMaidenName" class="form-control"></div></div><div><label for="Occupation" class="control-label col-md-2"> Occupation</label><div class="col-md-4"><input type="text" id="Occupation" data-bind="value: CustomerCreationVM.Occupation" class="form-control"></div></div></div></div>
+                            <!-- /Row -->
+
+                            <div class="row"><div class="form-group"><div><label for="BankName" class="control-label col-md-2"> Bank Name</label><div class="col-md-4"><input type="text" id="BankName" data-bind="value: CustomerCreationVM.BankName" class="form-control"></div></div><div><label for="BankAccountNo" class="control-label col-md-2">Back A/C No.</label><div class="col-md-4"><input type="text" id="BankAccountNo" data-bind="value: CustomerCreationVM.BankAccountNo" class="form-control"></div></div></div></div>
+                            <!-- /Row -->
+
+                            <div class="row"><div class="form-group"><div><label for="BankSortCode" class="control-label col-md-2"> Bank Sort Code</label><div class="col-md-4"><input type="text" id="BankSortCode" data-bind="value: CustomerCreationVM.BankSortCode" class="form-control"></div></div></div></div>
+                            <!-- /Row -->
+
+                            <div class="row"><div class="form-group"><div><label for="BankAddress" class="control-label col-md-2"> Bank Address</label><div class="col-md-9"><input type="text" id="BankAddress" data-bind="value: CustomerCreationVM.BankAddress" class="form-control"></div></div></div></div>
+                            <!-- /Row -->
+
+                            <div class="row"><div class="form-group"><div><label for="EmailIndemnity" class="control-label col-md-2"> Email Indemnity</label><div class="col-md-9"><input type="text" id="EmailIndemnity" data-bind="value: CustomerCreationVM.EmailIndemnity" class="form-control"></div></div></div></div>
+                            <!-- /Row -->
+
+                            <div class="row"><div class="form-group"><div><label for="InvestmentObjective" class="control-label col-md-2">Investment Obj.</label><div class="col-md-7"><input type="text" id="InvestmentObjective" data-bind="value: CustomerCreationVM.InvestmentObjective" class="form-control"></div></div></div></div>
+                            <!-- /Row -->
+
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" id="blnDeactivateSMSAlert" data-bind="checked: CustomerCreationVM.blnDeactivateSMSAlert">
+                                                <label for="blnDeactivateSMSAlert">* Un-subscribe Trans Notification By SMS</label>
+                                                <!-- <input type="checkbox">Un-subscribe Trans Notification By SMS -->
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /Row -->
+
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" id="blnDeactivateEmailAlert" data-bind="checked: CustomerCreationVM.blnDeactivateEmailAlert">
+                                                <label for="blnDeactivateEmailAlert">* Un-subscribe Trans Notification By Email</label>
+                                                <!--  <input type="checkbox" />Un-subscribe Trans Notification By SMS -->
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /Row -->
+
+
+                        </div>
+                        <style type="text/css">
+                            .fileupload .thumbnail > img {
+                                height: 100%;
+                            }
+                        </style>
+                        <div class="col-md-2" style="padding: 0 0 0 10px;">
+                            <div class="fileinput fileinput-new" data-provides="fileinput">
+                                Photo
+                                <div class="fileinput-preview thumbnail" style="width: 150px; height: 150px; line-height: 150px;" data-trigger="fileinput" ></div>
+                                <div>
+                                    <span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span><input type="file" name="..."></span>
+                                    <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+                                </div>
+                            </div>
+
+                            <div class="fileinput fileinput-new" data-provides="fileinput">
+                                Signature
+                                <div class="fileinput-preview thumbnail" style="width: 150px; height: 150px; line-height: 150px;" data-trigger="fileinput" ></div>
+                                <div>
+                                    <span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span><input type="file" name="..."></span>
+                                    <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+                                </div>
+                            </div>
+
+                            <a data-toggle="modal" href="#myModal" class="btn btn-primary btn-block">Next Of Kin
+                            </a>
+
+                            <button data-toggle="modal" type="button" href="#KYCLookupModal" class="btn btn-primary btn-block">
+                                KYC Information
+                            </button>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox">
+                                    Account Creation Approved
+                                </label>
+                            </div>
+                            <button type="button" class="btn btn-primary">
+                                Document Tracking
+                            </button>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-offset-2 col-md-10">
+                                <button type="button" class="btn btn-primary control-btn">
+                                    New
+                                </button>
+                                <button type="button" class="btn btn-primary control-btn ">
+                                    Save
+                                </button>
+                                <button type="button" class="btn btn-primary control-btn">
+                                    Approve
+                                </button>
+                                <button type="button" class="btn btn-primary control-btn">
+                                    Reverse
+                                </button>
+                                <button type="button" class="btn btn-primary control-btn">
+                                    Delete
+                                </button>
+                                <button type="button" class="btn btn-primary control-btn">
+                                    Exit
+                                </button>
+                            </div>
+                        </div><!-- /Row -->
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Modal Next Of Kin -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title">Next of Kin </h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="form-group">
+                                    <label for="inputAmount" class="control-label col-md-2">
+                                        Name
+                                    </label>
+                                    <div class=" col-md-10">
+                                        <input type="email" class="form-control" id="inputEmail1" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /Row -->
+                            <div class="row">
+                                <div class="form-group">
+                                    <label for="inputAmount" class="control-label col-md-2">
+                                        Address
+                                    </label>
+                                    <div class=" col-md-10">
+                                        <input type="email" class="form-control" id="inputEmail1" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /Row -->
+                            <div class="row">
+                                <div class="form-group">
+                                    <label for="inputAmount" class="control-label col-md-2">
+                                        Phone
+                                    </label>
+                                    <div class=" col-md-4">
+                                        <input type="email" class="form-control" id="inputEmail1" placeholder="">
+                                    </div>
+                                    <label for="inputAmount" class="control-label col-md-2">
+                                        Relationship
+                                    </label>
+                                    <div class=" col-md-4">
+                                        <input type="email" class="form-control" id="inputEmail1" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /Row -->
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary">
+                                Refresh
+                            </button>
+                            <button type="button" class="btn btn-primary ">
+                                Save
+                            </button>
+                            <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal">
+                                Exit
+                            </button>
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+            <!-- /.modal -->
+
+
+            <!-- Modal Customer Lookup Old Form -->
+            <div class="modal fade" id="custLookupModalOld" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+                <div class="modal-dialog modal-lg">
+
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title">Customer Lookup</h4>
+                        </div>
+                        <div class="modal-body">
+                            <fieldset>
+                                <legend>Customer Search</legend>
+                                <div class="row">
+                                    <div class="form-group">
+                                        <label for="Phone" class="control-label col-md-2"> Surname</label>
+                                        <div class="col-md-2">
+                                            <input type="text" id="Phone" data-bind="value: CustomerCreationVM.Phone" class="form-control">
+                                        </div>
+
+                                        <label for="RCNo" class="control-label col-md-2"> CSCS A/C</label>
+                                        <div class="col-md-2">
+                                            <input type="text" id="RCNo" data-bind="value: CustomerCreationVM.RCNo" class="form-control">
+                                        </div>
+
+                                        <label for="LGA" class="control-label col-md-2"> CSCS Reg</label>
+                                        <div class="col-md-2">
+                                            <input type="text" id="LGA" data-bind="value: CustomerCreationVM.LGA" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /Row -->
+
+                                <div class="row">
+                                    <div class="form-group">
+                                        <label for="Phone" class="control-label col-md-2"> Othername</label>
+                                        <div class="col-md-2">
+                                            <input type="text" id="Phone" data-bind="value: CustomerCreationVM.Phone" class="form-control">
+                                        </div>
+
+                                        <label for="RCNo" class="control-label col-md-2"> First Name</label>
+                                        <div class="col-md-2">
+                                            <input type="text" id="RCNo" data-bind="value: CustomerCreationVM.RCNo" class="form-control">
+                                        </div>
+
+                                        <label for="LGA" class="control-label col-md-2"> Cust. A/C</label>
+                                        <div class="col-md-2">
+                                            <input type="text" id="LGA" data-bind="value: CustomerCreationVM.LGA" class="form-control">
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- /Row -->
+
+                                <div class="row">
+                                    <div class="form-group">
+                                        <div class="col-md-offset-2 col-md-10">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" id="blnDeactivateEmailAlert" data-bind="checked: CustomerCreationVM.blnDeactivateEmailAlert">
+                                                    <label for="blnDeactivateEmailAlert">Seach By Only First Letter</label>
+                                                    <!--  <input type="checkbox" />Un-subscribe Trans Notification By SMS -->
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /Row -->
+
+
+                            </fieldset>
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <textarea class="form-control" rows="3"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /Row -->
+
+
+
+                        </div><!-- /modal-body -->
+                        <div class="modal-footer">
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+            <!-- /.modal -->
+
+            <!-- Modal  Lookup  Form -->
+            <div class="modal fade" id="LookupModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+                <div class="modal-dialog modal-lg">
+
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title"> Lookup</h4>
+                        </div>
+                        <div class="modal-body">
+
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <textarea class="form-control" rows="6"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /Row -->
+
+
+
+                        </div><!-- /modal-body -->
+                        <div class="modal-footer">
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+            <!-- /.modal -->
+
+            <!-- Modal  KYC Information  Form -->
+            <div class="modal fade" id="KYCLookupModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+                <div class="modal-dialog modal-lg">
+
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title"> Know Your Customer Information</h4>
+                        </div>
+                        <div class="modal-body">
+
+                            <div class="row">
+
+                                <div class="col-md-6">
+                                    <fieldset>
+                                        <legend>Individual Checklist</legend>
+
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" id="blnDeactivateEmailAlert" >
+                                                            <label for="blnDeactivateEmailAlert">Account Opening Completed</label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- /Row -->
+
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" id="blnDeactivateEmailAlert" >
+                                                            <label for="blnDeactivateEmailAlert">Utility Bill</label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- /Row -->
+
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" id="blnDeactivateEmailAlert" >
+                                                            <label for="blnDeactivateEmailAlert">Means of Identification</label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- /Row -->
+
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" id="blnDeactivateEmailAlert" >
+                                                            <label for="blnDeactivateEmailAlert">Passport Photograph</label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- /Row -->
+
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" id="blnDeactivateEmailAlert" >
+                                                            <label for="blnDeactivateEmailAlert">House Verification</label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- /Row -->
+                                        <br /><br />
+                                        <strong>Expatriate</strong>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" id="blnDeactivateEmailAlert" >
+                                                            <label for="blnDeactivateEmailAlert">Residence Permit</label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- /Row -->
+                                    </fieldset>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <fieldset>
+                                        <legend>Corporate Checklist</legend>
+
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" id="blnDeactivateEmailAlert" >
+                                                            <label for="blnDeactivateEmailAlert">Account Opening Completed</label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- /Row -->
+
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" id="blnDeactivateEmailAlert" >
+                                                            <label for="blnDeactivateEmailAlert">Utility Bill</label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- /Row -->
+
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" id="blnDeactivateEmailAlert" >
+                                                            <label for="blnDeactivateEmailAlert">Means of Identification</label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- /Row -->
+
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" id="blnDeactivateEmailAlert" >
+                                                            <label for="blnDeactivateEmailAlert">Passport Photograph</label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- /Row -->
+
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" id="blnDeactivateEmailAlert" >
+                                                            <label for="blnDeactivateEmailAlert">House Verification</label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- /Row -->
+
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" id="blnDeactivateEmailAlert" >
+                                                            <label for="blnDeactivateEmailAlert">Memorandum and Articles Of Association</label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- /Row -->
+
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" id="blnDeactivateEmailAlert" >
+                                                            <label for="blnDeactivateEmailAlert">Form CO2 or CO7</label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- /Row -->
+
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" id="blnDeactivateEmailAlert" >
+                                                            <label for="blnDeactivateEmailAlert">Certificate of Incorporation</label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- /Row -->
+
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" id="blnDeactivateEmailAlert" >
+                                                            <label for="blnDeactivateEmailAlert">Signature Mandate</label>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- /Row -->
+                                    </fieldset>
+                                </div>
+
+                            </div>
+                            <!-- /Row -->
+
+                            <div class="row">
+                                <div class="form-group">
+                                    <label for="ClientType" class="control-label col-md-4"> Model of Identification</label>
+                                    <div class="col-md-3">
+                                        <select id="Branch" data-bind="value: CustomerCreationVM.Branch, options: Branch, optionsValue: 'TransNo', optionsText: 'Name', optionsCaption: ''" class="form-control"></select>
+                                    </div>
+
+                                    <div class="col-md-offset-2 col-md-3">
+                                        <input type="text" id="Phone" data-bind="value: CustomerCreationVM.Phone" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /Row -->
+
+
+
+                        </div><!-- /modal-body -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary">
+                                Refresh
+                            </button>
+                            <button type="button" class="btn btn-primary">
+                                Save
+                            </button>
+                            <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal">
+                                Exit
+                            </button>
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+            <!-- /.modal -->
+
+
+
+
+
+            <!-- Modal Customer Lookup Form -->
+            <div class="modal fade" id="custLookupModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+                <div class="modal-dialog modal-lg">
+
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title"> Lookup</h4>
+                        </div>
+                        <div class="modal-body">
+                            <fieldset>
+                                <legend>Customer Search</legend>
+                                <div class="row">
+                                    <div class="form-group">
+                                        <label for="Phone" class="control-label col-md-2"> Surname</label>
+                                        <div class="col-md-4">
+                                            <input type="text" id="Phone" data-bind="value: CustomerCreationVM.Phone" class="form-control">
+                                        </div>
+
+                                        <label for="RCNo" class="control-label col-md-2"> Cust. A/C</label>
+                                        <div class="col-md-4">
+                                            <input type="text" id="RCNo" data-bind="value: CustomerCreationVM.RCNo" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /Row -->
+
+                                <div class="row">
+                                    <div class="form-group">
+                                        <label for="Phone" class="control-label col-md-2"> Othername</label>
+                                        <div class="col-md-4">
+                                            <input type="text" id="Phone" data-bind="value: CustomerCreationVM.Phone" class="form-control">
+                                        </div>
+
+                                        <label for="RCNo" class="control-label col-md-2"> First Name</label>
+                                        <div class="col-md-4">
+                                            <input type="text" id="RCNo" data-bind="value: CustomerCreationVM.RCNo" class="form-control">
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <!-- /Row -->
+                            </fieldset>
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <textarea class="form-control" rows="3"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /Row -->
+
+
+
+                        </div><!-- /modal-body -->
+                        <div class="modal-footer">
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+            <!-- /.modal -->
+
+
+
+
+        </form>
+    </div>

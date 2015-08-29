@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="PyjacOMSApp">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Pyjac OMS | Dashboard</title>
+    
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <!-- bootstrap  -->
+    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <!-- font Awesome -->
+    <link rel="stylesheet" type="text/css" href="bower_components/fontawesome/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" type="text/css" href="bower_components/ionicons/css/ionicons.min.css">
+    <!-- Morris chart -->
+    <link href="bower_components/morrisjs/morris.css" rel="stylesheet" type="text/css" />
+    <!-- jvectormap -->
+    <link href="bower_components/jvectormap/jquery-jvectormap.css" rel="stylesheet" type="text/css" />
+    <!-- DataTables -->
+    <link href="components/css/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
+    
+    <!-- Toastr -->
+    <link href="bower_components/toastr/toastr.min.css" rel="stylesheet"/>
+
+    <!-- Date Picker -->
+    <link href="components/css/datepicker/datepicker3.css" rel="stylesheet" type="text/css" />
+    <!-- Daterange picker -->
+    <link href="components/css/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
+    <!-- bootstrap wysihtml5 - text editor -->
+    <link href="components/css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="components/css/main.css" rel="stylesheet" type="text/css" />
+    <!-- Theme style 
+    <link href="components/css/AdminLTE.css" rel="stylesheet" type="text/css" />
+    -->
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
+
+    <script type="text/javascript">
+        if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+            var msViewportStyle = document.createElement("style");
+            var mq = "@@-ms-viewport{width:auto!important}";
+            msViewportStyle.appendChild(document.createTextNode(mq));
+            document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
+        }
+    </script>
+</head>
+
+<body class="skin-blue" ui-view>
+ 
+ <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="bower_components/app-theme.js"></script>
+  <script type="text/javascript"  src='/js/bundled.js'></script>
+  
+</body>
+<!--
+<script type="text/javascript" src="Scripts/jquery-2.0.3.js"></script>
+<script type="text/javascript" src="Scripts/bootstrap.js"></script>
+<script type="text/javascript" src="Scripts/bootstrap-fileupload.min.js"></script>
+<script type="text/javascript" src="Scripts/bootstrap-dialog.min.js"></script>
+-->
+</html>

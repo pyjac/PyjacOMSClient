@@ -1,0 +1,17 @@
+{
+  "name": "PyjacOMSClient",
+  "version": "1.0.0",
+  "description": "An OMS implementation by Pyjac",
+  "main": "gulpfile.js",
+  "authors": [
+    "Pyjac"
+  ],
+  "license": "ISC",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "app/bower_components",
+    "test",
+    "tests"
+  ]
+}
